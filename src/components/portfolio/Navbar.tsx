@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Terminal } from "lucide-react";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -18,11 +18,12 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass"
+      className="fixed top-0 left-0 right-0 z-50 glass-heavy"
     >
       <div className="container mx-auto flex items-center justify-between py-4">
-        <a href="#" className="text-xl font-bold text-gradient">
-          &lt;Dev /&gt;
+        <a href="#" className="flex items-center gap-2 font-display text-lg font-bold text-gradient tracking-wider">
+          <Terminal size={18} className="text-primary" />
+          UM.dev
         </a>
 
         {/* Desktop */}
@@ -31,7 +32,7 @@ const Navbar = () => {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 font-mono"
               >
                 {item.label}
               </a>
@@ -40,7 +41,7 @@ const Navbar = () => {
           <li>
             <a
               href="/resume.pdf"
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-display tracking-wider uppercase"
             >
               Resume
             </a>
@@ -64,7 +65,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border/50"
+            className="md:hidden glass-heavy border-t border-primary/10"
           >
             <ul className="flex flex-col items-center gap-4 py-6">
               {navItems.map((item) => (
@@ -72,7 +73,7 @@ const Navbar = () => {
                   <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors font-mono"
                   >
                     {item.label}
                   </a>
@@ -81,7 +82,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="/resume.pdf"
-                  className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-primary-foreground"
+                  className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-primary-foreground font-display tracking-wider uppercase"
                 >
                   Resume
                 </a>
